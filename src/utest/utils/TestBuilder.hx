@@ -205,12 +205,10 @@ class TestBuilder {
 					dependencies: $v{dependencies},
 					execute:function() {
 						var async = @:privateAccess new utest.Async(${getTimeoutExpr(cls, field)});
-						this.$test.start((_,err) -> {
+						hxcoro.CoroRun.run(() -> {
+							this.$test();
 							if (async.timedOut) Assert.fail("timeout");
-							else {
-								if (err != null) Assert.fail(err);
-								if (!async.resolved) async.done();
-							}
+							if (!async.resolved) async.done();
 						});
 						return async;
 					},
@@ -235,12 +233,10 @@ class TestBuilder {
 
 				if (field.meta.exists(m -> m.name == ":coroutine")) {
 					exec = macro
-						this.$test.start(async, (_,err) -> {
+						hxcoro.CoroRun.run(() -> {
+							this.$test(async);
 							if (async.timedOut) Assert.fail("timeout");
-							else {
-								if (err != null) Assert.fail(err);
-								if (!async.resolved) async.done();
-							}
+							if (!async.resolved) async.done();
 						});
 				}
 
