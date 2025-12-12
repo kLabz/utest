@@ -57,8 +57,9 @@ jobs:
       shell: bash
       id: prerequisites
       run: |
-        haxelib install travix
-        haxelib run travix install
+        haxelib git travix https://github.com/kLabz/travix haxe5
+        pushd . && cd $(haxelib config)travix/git && haxe build-neko.hxml && popd
+        # haxelib run travix install
 
 
     ##################################################
