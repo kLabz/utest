@@ -49,7 +49,7 @@ jobs:
         python-version: 3.8
 
     - name: Install Haxe ${{ matrix.haxe }}
-      uses: krdlab/setup-haxe@v1 # https://github.com/krdlab/setup-haxe
+      uses: krdlab/setup-haxe@v2 # https://github.com/krdlab/setup-haxe
       with:
         haxe-version: ${{ matrix.haxe }}
 
