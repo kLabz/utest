@@ -86,9 +86,9 @@ jobs:
     # - name: Test [flash]
     #   if: ${{ !cancelled() && steps.prerequisites.conclusion == 'success' }}
     #   run: haxelib run travix flash
-    - name: Test [java]
+    - name: Test [jvm]
       if: ${{ !cancelled() && steps.prerequisites.conclusion == 'success' }}
-      run: haxelib run travix java
+      run: haxelib run travix jvm
     - name: Test [cpp]
       if: ${{ !cancelled() && steps.prerequisites.conclusion == 'success' }}
       run: haxelib run travix cpp
