@@ -12,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    env:
+      TRAVIS_HAXE_VERSION: ${{ matrix.haxe == 'latest' && 'development' || matrix.haxe}}
     strategy:
       fail-fast: false
       matrix:
